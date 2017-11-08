@@ -5,21 +5,16 @@ import os
 import time
 from bs4 import BeautifulSoup
 
+
 RANGE = int(os.environ.get('CHICAGO_RANGE', 2))
 SEQUENCE = os.environ.get('CHICAGO_SEQUENCE', 0)
 LOAD_ID = str(time.mktime(datetime.datetime.now().timetuple())).split('.')[0]
 
 ########## YOUR CODE GOES HERE ##########
 
-full_url = 'https://chicagoelections.com/en/pctlevel3.asp?Ward=1&elec_code=9&race_number=10' 
-
 
 def get_html(ward):
-
-    url = 'https://chicagoelections.com/en/pctlevel3.asp?Ward=1&elec_code=9&race_number=10'
-
-    full_url = 'http://www.chicagoelections.com/en/pctlevel3.asp?elec_code=9&race_number=10&ward=' + str(ward)
-
+ 
 
     # we'll talk about this Friday
     html = requests.get(url).content
@@ -45,13 +40,7 @@ def get_html(ward):
 
 def get_table(html):
 
-    html = urllib2.urlopen(full_url).read()
-
-    soup = BeautifulSoup(html, "html.parser") 
-
-    table = soup.find('table', {'border': '0'})
-
-    return table
+    
 
     
     '''
@@ -62,6 +51,12 @@ def get_table(html):
     '''
 
     # Write your code here
+
+    html = urllib2.urlopen(full_url).read()
+
+    soup = BeautifulSoup(html, "html.parser") 
+
+    table = soup.find('table', {'border': '0'})
 
     return table # Leave this line here. Just be sure to call your variable table.
 
@@ -135,10 +130,4 @@ def main():
         set_load_id()
 
 if __name__ == "__main__":
-    main()# Python2
-# Python2
-# Python2
-# Python2
-# Python2
-# Python Assignment 2
-# Python-Assignment-2
+    main()
